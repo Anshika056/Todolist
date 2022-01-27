@@ -9,6 +9,7 @@ require("./database/connect");
 const userroutes = require("./routes/user");
 const usercrudroutes = require("./routes/user-crud");
 const postroutes = require("./routes/post");
+const catroutes =require("./routes/categories");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -20,6 +21,7 @@ const post = require('./models/post');
 app.use("/api",userroutes);
 app.use("/api",usercrudroutes);
 app.use("/api",postroutes);
+app.use("/api",catroutes);
 
 app.listen(PORT,()=>{
     console.log(`server is running at ${PORT}`);
