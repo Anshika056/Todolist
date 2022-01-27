@@ -7,7 +7,6 @@ const bcrypt = require("bcrypt");
 router.post("/register", async (req,res)=>{
 try{
 const{username , email , password } = req.body;
- 
 const newusers = new User({username,email,password});
 const users = await newusers.save();
 if(users)
