@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/users");
 const Post = require("../models/post");
+const multer =  require("multer");
 
 //create a post
 router.post("/createpost",async (req,res)=>{
@@ -91,6 +92,22 @@ router.get("/getpost/:id", async (req, res) => {
     }
   });
 
+
+  //upload the post 
+  const storage = multer.diskStorage({           //storage for the images
+    destination: (req, file, cb) => {            // where should be stored
+      cb(null, "images");
+    },
+    filename: (req, file, cb) => {                        
+      cb(null, "file.jpg");
+    },
+  });
+  
+  const upload = multer({ storage: storage });
+  router.post("/upload", upload.single("file"), (req, res) => {
+    res.status(200).json("File has been uploaded");
+  });
+  
 
 
 module.exports=router;
