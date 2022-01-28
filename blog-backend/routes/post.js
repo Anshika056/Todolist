@@ -99,7 +99,7 @@ router.get("/getpost/:id", async (req, res) => {
       cb(null, "images");
     },
     filename: (req, file, cb) => {                        
-      cb(null, "file.jpg");
+      cb(null, file.filename +Date.now()+".jpg");
     },
   });
   
