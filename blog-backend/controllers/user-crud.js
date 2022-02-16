@@ -2,6 +2,8 @@ const User = require("../models/users");
 const Post = require("../models/post");
 const bcrypt = require("bcrypt");
 
+
+//update the user
 exports.updateuser=async (req,res)=>{
     if(req.body.userId == req.params.id){                      //it will check if the id send in body matchs the id sent in the parameters
         if(req.body.password){                                      //if the user wants to update its password then it will hash before saving
